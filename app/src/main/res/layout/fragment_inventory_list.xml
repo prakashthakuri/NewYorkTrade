@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+<SearchView android:layout_height="wrap_content" android:layout_width="match_parent"
+    android:id="@+id/search_inventory"
+    android:clickable="true"
+    android:iconifiedByDefault="false"
+    android:queryHint="Search Your Inventory"/>
+
+    <Button
+        android:id="@+id/add_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add_item"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_button"
+        android:layout_margin="5dp"/>
+
+<androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inventory_list"
+    android:name="com.cs639.pacexchange.InventoryFragment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    tools:context=".InventoryFragment"
+    tools:listitem="@layout/fragment_inventory" />
+
+</LinearLayout>
