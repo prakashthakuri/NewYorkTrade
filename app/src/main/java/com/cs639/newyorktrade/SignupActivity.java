@@ -95,7 +95,10 @@ public class SignupActivity extends AppCompatActivity {
                     users.put("items", 0);
                     db.collection("users").document(user.getUid()).set(users);
 
-                    startActivity(new Intent(this, MainActivity.class));
+
+                    Toast.makeText(this, "User Created Successfully", Toast.LENGTH_SHORT).show();
+
+                    startActivity(new Intent(this, LoginActivity.class));
                     finish();
                 }
             });

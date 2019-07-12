@@ -7,7 +7,7 @@
         android:id="@+id/add_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add an Item for Sale"
+        android:text="@string/add_an_item_for_sale"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:textSize="30sp"/>
@@ -49,7 +49,9 @@
             android:id="@+id/edit_item_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description"/>
+            android:hint="@string/description"/>
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +70,7 @@
         android:id="@+id/btn_add_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Item"
+        android:text="@string/add_item"
         android:layout_marginTop="50dp"
         android:layout_below="@+id/category_spinner"
         android:layout_centerHorizontal="true"

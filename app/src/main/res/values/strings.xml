@@ -78,6 +78,9 @@
     <string name="message_seller">Message Seller</string>
     <string name="member_since">Member Since</string>
     <string name="send_email">Send Email</string>
+    <string name="description">Description</string>
+    <string name="add_item">Add Item</string>
+    <string name="add_an_item_for_sale">Add an Item for Sale</string>
 
     <string-array name="category_array">
         <item>Books</item>
