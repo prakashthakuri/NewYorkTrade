@@ -1,2 +1,3 @@
-# PacExchange
-Bartering App for University Students
+# NewYork Trade
+
+New York Trade: Simply Trading
