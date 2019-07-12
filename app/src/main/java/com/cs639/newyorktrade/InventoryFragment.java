@@ -2,14 +2,6 @@ package com.cs639.newyorktrade;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,7 +10,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -158,10 +157,20 @@ public class InventoryFragment extends Fragment {
                     FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).update(userItemsUpdate);
                     return true;
                 case R.id.action_edit:
-                    Toast.makeText(getContext(), "Edit Item", Toast.LENGTH_SHORT).show();
-                    return true;
+                new AddItemFragment();
+                return true;
                 case R.id.action_share:
-                    Toast.makeText(getContext(), "Share Item", Toast.LENGTH_SHORT).show();
+                    Intent shareIntent = new Intent();
+                    shareIntent.setAction(Intent.ACTION_SEND);
+
+                    shareIntent.setType("text/plain");
+                    startActivity(Intent.createChooser(shareIntent,"Share"));
+                    return true;
+                case R.id.action_sold:
+                    FirebaseFirestore.getInstance().collection("sales").document(selectedItem).delete();
+                    Map<String, Object> userItemsUpdateAgain = new HashMap<>();
+                    userItemsUpdateAgain.put("sales", FieldValue.increment(+1));
+                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).update(userItemsUpdateAgain);
                     return true;
                 default:
             }

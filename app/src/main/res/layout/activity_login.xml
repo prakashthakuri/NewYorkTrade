@@ -49,7 +49,9 @@
                 android:inputType="textPassword"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <!-- Login Button -->
 

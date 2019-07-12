@@ -2,8 +2,6 @@ package com.cs639.newyorktrade;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,7 +46,7 @@ public class SignupActivity extends AppCompatActivity {
         btnResetPassword = findViewById(R.id.btn_reset_password);
         inputName = findViewById(R.id.name);
         inputPhone = findViewById(R.id.phone);
-        inputYear = findViewById(R.id.grad);
+        inputYear = findViewById(R.id.member_since);
         //Format to phone number as user enters text
         inputPhone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         //Finish activity on sign up

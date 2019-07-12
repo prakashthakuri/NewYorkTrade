@@ -153,6 +153,8 @@ public class AddItemFragment extends Fragment implements AdapterView.OnItemSelec
             Map<String, Object> userUpdate = new HashMap<>();
             userUpdate.put("items", FieldValue.increment(1));
             db.collection("users").document(user.getUid()).update(userUpdate);
+            Toast.makeText(getContext(), "Item Added Successfully", Toast.LENGTH_LONG).show();
+
         }
     }
 

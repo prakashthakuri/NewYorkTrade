@@ -1,9 +1,7 @@
 package com.cs639.newyorktrade;
 
 import android.content.Intent;
-
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ItemTradeDetailsActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +21,13 @@ public class ItemTradeDetailsActivity extends AppCompatActivity {
     private void DisplaySellerData()
     {
         Intent startingIntent = getIntent();
-        TextView sellerNameTextView = findViewById(R.id.seller_name);
+        TextView ItemNameTextView = findViewById(R.id.seller_name);
         TextView itemTypeTextView = findViewById(R.id.item_type_name);
         TextView estimatedValueTextView = findViewById(R.id.estimated_value);
-        sellerNameTextView.setText(startingIntent.getStringExtra("name"));
         itemTypeTextView.setText(startingIntent.getStringExtra("category"));
         estimatedValueTextView.setText(startingIntent.getStringExtra("cost"));
+        ItemNameTextView.setText(startingIntent.getStringExtra("userName"));
+
     }
     private void setButtonClickListeners()
     {
@@ -36,13 +36,18 @@ public class ItemTradeDetailsActivity extends AppCompatActivity {
         Button proposeTradeButton = findViewById(R.id.propose_trade_button);
         proposeTradeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ItemTradeDetailsActivity.this, ChatActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                Intent TradeIntent = new Intent(ItemTradeDetailsActivity.this, PurposeTrade.class);
+                startActivity(TradeIntent);
 
             }
         });
 
+
+
+
     }
+
+
 }
 

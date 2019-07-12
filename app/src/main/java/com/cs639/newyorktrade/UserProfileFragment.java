@@ -1,16 +1,19 @@
 package com.cs639.newyorktrade;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,7 +40,7 @@ public class UserProfileFragment extends Fragment {
 
     @SuppressLint("StringFormatMatches")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
         //Initialize UI elements
@@ -64,6 +67,32 @@ public class UserProfileFragment extends Fragment {
         //Assign user image to image view
         mStorageRef.child(user.getUid()).getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage));
         //Set user profile grad year and phone #
+
+        mEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("message/rfc882");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{String.valueOf(mEmail)});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+                emailIntent.putExtra(Intent.EXTRA_TEXT   , "body of email");
+
+
+                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+
+            }
+        });
+
+        mPhoneNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+                phoneIntent.setData(Uri.parse(String.valueOf(mPhoneNumber)));
+
+                startActivity(phoneIntent);
+            }
+        });
+
 
         DocumentReference docRef = db.collection("users").document(user.getUid());
         docRef.get().addOnCompleteListener(task -> {
