@@ -1,7 +1,6 @@
 package com.cs639.newyorktrade;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,12 +47,20 @@ public class PurposeTrade extends AppCompatActivity {
         String userPhone = user.getPhoneNumber();
 
 
-callSeller.setOnClickListener(view -> {
-    Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
-    phoneIntent.setData(Uri.parse((userPhone)));
 
-    startActivity(phoneIntent);
-});
+        callSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+//                phoneIntent.setData(Uri.parse(String.valueOf(userPhone)));
+//
+//                startActivity(phoneIntent);
+
+                Toast.makeText(PurposeTrade.this, user.getDisplayName() + " Phone number is Private. Please Email the user.", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
         getRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

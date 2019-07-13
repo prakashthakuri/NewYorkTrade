@@ -34,7 +34,7 @@
     <PreferenceCategory android:title="About">
         <Preference
             android:selectable="false"
-            android:summary="We are a team of Pace University students who understand how challenging it can be to get by in NYC! That's why we have created PacExchange to let students help each other out." />
+            android:summary="Created by Prakash Shahi Thakuri at Pace University." />
 
         <Preference
             android:summary="1.0"

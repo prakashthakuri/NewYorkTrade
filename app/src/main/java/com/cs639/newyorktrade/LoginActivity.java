@@ -75,8 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                         else
                             Toast.makeText(LoginActivity.this, LoginActivity.this.getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                     } else
-//                        LoginActivity.this.
-                        finish();
+                        LoginActivity.this.finish();
                 });
             }
         });
